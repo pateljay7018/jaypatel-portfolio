@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay Patel — Data Analyst & BI Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loading indicator -->
+  <div id="loader" class="loader-container">
+    <div class="loader-track">
+      <div id="loader-bar" class="loader-bar"></div>
+    </div>
+    <div id="loader-text" class="loader-text">Loading 0%</div>
+  </div>
+
+  <!-- Background Scroll Animation Canvas -->
+  <div class="canvas-container">
+    <canvas id="scroll-canvas"></canvas>
+    <div class="canvas-overlay"></div>
+  </div>
+
+  <!-- Main Website Content Wrapper -->
+  <div id="content-wrapper">
+
+    <!-- Header Navigation (Unified Component) -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="index.html#hero" class="brand-logo">
+          <span class="logo-badge">JP</span>
+          <div class="logo-text">
+            <span class="logo-name">JAY PATEL</span>
+            <span class="logo-sub">DATA ANALYST & BI SPECIALIST</span>
+          </div>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html#hero" class="nav-link active">Home</a>
+          <a href="index.html#skills" class="nav-link">Skills</a>
+          <a href="index.html#experience" class="nav-link">Experience</a>
+          <a href="index.html#education" class="nav-link">Education</a>
+          <a href="index.html#certifications" class="nav-link">Certifications</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="nav-actions" style="display: flex; gap: 10px; align-items: center;">
+          <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener" class="btn btn-outline nav-cta">LINKEDIN <span class="arrow">↗</span></a>
+          <a href="assets/Jay_Patel_Resume.html" target="_blank" class="btn btn-primary nav-cta">VIEW RESUME <span class="arrow">⤓</span></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="pill-badge">HELLO, I'M JAY PATEL</div>
+          <h1 class="hero-name">Jay Patel</h1>
+          <h2 class="hero-title">Data Analyst & <br /><span class="gradient-text">BI Specialist</span></h2>
+          <p class="hero-description">
+            4+ years of experience engineering automated Power BI dashboards, SQL data pipelines, and Python analytics. Proven record saving 30+ hours/week in reporting and improving data accuracy by up to 40%.
+          </p>
+
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-primary">VIEW PROJECTS <span class="arrow">↗</span></a>
+            <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener" class="btn btn-glass">VIEW LINKEDIN <span class="arrow">↗</span></a>
+            <a href="assets/Jay_Patel_Resume.html" target="_blank" class="btn btn-outline">VIEW RESUME <span class="arrow">⤓</span></a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">4+</span>
+              <span class="stat-label">YEARS EXPERIENCE</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">30+</span>
+              <span class="stat-label">HRS/WK SAVED</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">40%</span>
+              <span class="stat-label">ACCURACY BOOST</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-floating-elements">
+          <div class="glass-card float-card card-ai">
+            <div class="card-tag">BI DASHBOARDING</div>
+            <div class="ds-badges">
+              <span>POWER BI</span>
+              <span>DAX</span>
+              <span>SQL SERVER</span>
+              <span>TABLEAU</span>
+              <span>KPI DESIGN</span>
+              <span>DATA MODELING</span>
+            </div>
+          </div>
+
+          <div class="glass-card float-card card-ds">
+            <div class="card-tag">ANALYTICS & ETL</div>
+            <div class="ds-badges">
+              <span>PYTHON</span>
+              <span>PANDAS</span>
+              <span>SNOWFLAKE</span>
+              <span>AWS S3</span>
+              <span>POWER AUTOMATE</span>
+              <span>EXCEL VBA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Tech Stack & Skills Marquee Wheel (Driven 100% Dynamically from excel/skills.csv) -->
+    <section id="skills" class="section" style="padding-top: 20px; padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">MY TECH STACK</span>
+          <h2 class="section-title">Technologies & Skills I Use</h2>
+        </div>
+
+        <div class="tech-marquee-wrapper">
+          <div id="skills-track" class="tech-marquee-track">
+            <!-- Dynamic skills rendered live from excel/skills.csv -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: WORK EXPERIENCE (Driven 100% Dynamically from excel/experience.csv) -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">WORK EXPERIENCE</span>
+          <h2 class="section-title">Professional Journey</h2>
+        </div>
+
+        <div id="experience-grid" class="process-steps">
+          <!-- Dynamic work experience cards rendered live from excel/experience.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: EDUCATION & ACADEMICS (Driven 100% Dynamically from excel/education.csv) -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">EDUCATION & ACADEMICS</span>
+          <h2 class="section-title">Academic Background</h2>
+        </div>
+
+        <div id="education-grid" class="process-steps">
+          <!-- Dynamic education cards rendered live from excel/education.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CERTIFICATIONS & CREDENTIALS (Driven 100% Dynamically from excel/certifications.csv) -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">CERTIFICATIONS & CREDENTIALS</span>
+          <h2 class="section-title">Verified Qualifications</h2>
+        </div>
+
+        <div id="certs-grid" class="certs-grid">
+          <!-- Dynamic certification cards rendered live from excel/certifications.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FEATURED PROJECTS (Driven 100% Dynamically from excel/projects.csv) -->
+    <section id="projects" class="section" style="padding-top: 20px; padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 20px;">
+          <div>
+            <span class="section-subtitle">FEATURED PROJECTS</span>
+            <h2 class="section-title" style="font-size: 1.8rem;">Analytics & BI Case Studies</h2>
+          </div>
+          <a href="projects.html" class="link-more">EXPLORE ALL PROJECTS ↗</a>
+        </div>
+
+        <div id="compact-projects-grid" class="compact-projects-grid">
+          <!-- Dynamic featured project cards rendered live from excel/projects.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="cta-box glass-card">
+          <div class="cta-content">
+            <span class="section-subtitle">LET'S CONNECT</span>
+            <h2 class="cta-title">Have a Data Challenge?</h2>
+            <p class="cta-desc">
+              I am open for Data Analyst & BI Specialist opportunities. Feel free to get in touch or connect on LinkedIn!
+            </p>
+            <a href="mailto:pateljay7018@gmail.com" class="btn btn-primary cta-btn">SEND AN EMAIL <span class="arrow">↗</span></a>
+          </div>
+
+          <div class="cta-contact-details">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a href="mailto:pateljay7018@gmail.com" class="contact-val">pateljay7018@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Phone</span>
+              <a href="tel:+14378581298" class="contact-val">+1 437-858-1298</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener" class="contact-val">linkedin.com/in/jaypatel1298</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Location</span>
+              <span class="contact-val">Toronto, ON, Canada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (Unified Component) -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html#hero" class="brand-logo">
+            <span class="logo-badge">JP</span>
+            <div class="logo-text">
+              <span class="logo-name">JAY PATEL</span>
+              <span class="logo-sub">DATA ANALYST & BI SPECIALIST</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Transforming complex data into actionable dashboards and high-impact business insights.
+          </p>
+          <span class="copyright">© 2026 Jay Patel. All rights reserved.</span>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#education">Education</a></li>
+            <li><a href="index.html#certifications">Certifications</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">CONNECT</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:pateljay7018@gmail.com">Email Me</a></li>
+            <li><a href="tel:+14378581298">Call Me</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col newsletter-col">
+          <h4 class="footer-heading">GET IN TOUCH</h4>
+          <p class="newsletter-desc">Reach out directly via email for data analytics & BI inquiries.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.location.href='mailto:pateljay7018@gmail.com';">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="newsletter-btn">➔</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script src="js/excel-loader.js"></script>
+</body>
+</html>

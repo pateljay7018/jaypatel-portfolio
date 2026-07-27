@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay Patel — Resume / Curriculum Vitae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #090a0f;
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .resume-paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #111524;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .header {
+      border-bottom: 2px solid rgba(139, 92, 246, 0.4);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .name { font-size: 2.25rem; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; }
+    .title { font-size: 1.15rem; font-weight: 700; color: #a855f7; margin-top: 4px; }
+    .contact-info { text-align: right; font-size: 0.85rem; color: #94a3b8; }
+    .contact-info a { color: #a855f7; text-decoration: none; font-weight: 600; }
+    .contact-info a:hover { text-decoration: underline; }
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .summary { font-size: 0.95rem; color: #cbd5e1; }
+    .experience-item, .education-item { margin-bottom: 24px; }
+    .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    .comp-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+    .location { font-size: 0.85rem; color: #94a3b8; }
+    .role-title { font-size: 0.95rem; font-weight: 600; color: #a855f7; font-style: italic; }
+    .dates { font-size: 0.85rem; font-weight: 600; color: #94a3b8; }
+    ul { margin-left: 20px; margin-top: 8px; color: #cbd5e1; font-size: 0.9rem; }
+    li { margin-bottom: 6px; }
+    .skills-group { margin-bottom: 12px; font-size: 0.9rem; }
+    .skills-label { font-weight: 700; color: #ffffff; }
+    .print-bar {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media print {
+      body { background: white; color: black; padding: 0; }
+      .resume-paper { border: none; box-shadow: none; padding: 0; background: white; }
+      .name, .comp-name, .skills-label { color: black; }
+      .title, .role-title, .section-title { color: #6b21a8; }
+      .summary, ul, li { color: #334155; }
+      .print-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar">
+    <button onclick="window.print()" class="btn">🖨 Print / Save as PDF</button>
+  </div>
+
+  <div class="resume-paper">
+    <header class="header">
+      <div>
+        <h1 class="name">JAY PATEL</h1>
+        <div class="title">Data Analyst & BI Specialist</div>
+      </div>
+      <div class="contact-info">
+        <div>Toronto, ON, Canada</div>
+        <div><a href="mailto:pateljay7018@gmail.com">pateljay7018@gmail.com</a></div>
+        <div>+1 437-858-1298</div>
+        <div><a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank">linkedin.com/in/jaypatel1298</a></div>
+      </div>
+    </header>
+
+    <div class="section-title">ABOUT</div>
+    <p class="summary">
+      Data Analyst & BI Specialist with four years of experience developing and maintaining Power BI dashboards and ensuring data quality, consistency, and integrity across reporting solutions with clear communication. Reduced manual reporting by 30+ hours/week and improved data accuracy by up to 40% using Power BI, SQL, Python, and Advanced Excel. Skilled in AI-assisted analytics with direct experience in supply chain, logistics, and finance roles.
+    </p>
+
+    <div class="section-title">SKILLS & INTERESTS</div>
+    <div class="skills-group">
+      <span class="skills-label">Analytics & BI Stack:</span> Power BI (DAX, Data Modeling, Power Query), SQL (MySQL, SQL Server, CTEs, Window Functions), Python (Pandas, NumPy, PySpark), Tableau, Statistics & EDA, KPI Design & Dashboarding, Advanced Excel (PivotTables, Power Query, VBA), ETL Processes.
+    </div>
+    <div class="skills-group">
+      <span class="skills-label">Cloud & Tools:</span> AWS (EC2, S3, RDS), Snowflake, SharePoint, Jira, Agile/Scrum, Visio, Microsoft Fabric, Azure Data Factory.
+    </div>
+    <div class="skills-group">
+      <span class="skills-label">Process Improvement:</span> Workflow Automation, Power Automate, Data Warehousing, Data Governance, Data Dictionaries, Data Transformation, Data Quality & Validation.
+    </div>
+
+    <div class="section-title">WORK EXPERIENCE</div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Best Buy</span>
+        <span class="location">Vaughan, ON</span>
+      </div>
+      <div class="item-header">
+        <span class="role-title">Computer Solutions Specialist</span>
+        <span class="dates">Oct 2025 – Present</span>
+      </div>
+      <ul>
+        <li>Tracked daily service KPIs in Power BI, identifying recurring technical issues and feedback trends that informed team process improvements.</li>
+        <li>Resolved 100+ daily technical cases across hardware, software, and OS environments, maintaining high first-contact resolution under fast-paced, high-volume conditions.</li>
+        <li>Diagnosed customer technical and product needs across 10+ categories, recommending tailored solutions and service plans.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Newrest</span>
+        <span class="location">Mississauga, ON</span>
+      </div>
+      <div class="item-header">
+        <span class="role-title">Production IT Support Specialist</span>
+        <span class="dates">Apr 2024 – Sep 2025</span>
+      </div>
+      <ul>
+        <li>Reduced manual reporting effort by 35% by building and designing automated KPI dashboards in Power BI and Excel with DAX measures and Power Query.</li>
+        <li>Improved data quality and anomaly detection by 25% by standardizing data entry workflows and building validation rules into production floor reporting systems.</li>
+        <li>Maintained SLA compliance by triaging and resolving Tier 1 IT support tickets through structured root-cause analysis.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Meticulousorbit Technologies Pvt Ltd</span>
+        <span class="location">India</span>
+      </div>
+      <div class="item-header">
+        <span class="role-title">Database Analysis and BI Dashboard Specialist</span>
+        <span class="dates">Mar 2023 – Aug 2023</span>
+      </div>
+      <ul>
+        <li>Designed and optimized Power BI dashboards tracking compliance and security metrics for leadership, eliminating ~6 hours/week of manual reporting through automated data refresh.</li>
+        <li>Developed DAX measures and KPI visualizations that improved cybersecurity reporting accuracy by 35%.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Apnahome Ltd</span>
+        <span class="location">London, The UK</span>
+      </div>
+      <div class="item-header">
+        <span class="role-title">Data Analyst</span>
+        <span class="dates">Dec 2021 – Feb 2023</span>
+      </div>
+      <ul>
+        <li>Built and automated KPI dashboards in Microsoft Power BI and Excel to track monthly revenue and sales performance, reducing manual reporting time by 30 hours per week.</li>
+        <li>Developed SKU-level pricing models that increased cost assessment accuracy by 40%.</li>
+        <li>Performed SKU trend analysis using Python-based clustering models, contributing to a 15% sales uplift.</li>
+      </ul>
+    </div>
+
+    <div class="section-title">PROJECT EXPERIENCE</div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Amazon Seller Excel Workbook with Macro</span>
+        <span class="role-title">Excel Automation Developer</span>
+      </div>
+      <ul>
+        <li>Built Excel automation macros to consolidate SKU data from 5+ vendor sources into a standardized format, accelerating workflows by 40%.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Business Insights Using MySQL with Python EDA</span>
+        <span class="role-title">Data Analyst (Python/MySQL)</span>
+      </div>
+      <ul>
+        <li>Cleaned and joined transactional datasets using MySQL and Python (Pandas, NumPy), reducing reporting errors by 20% and saving 4 hours per week.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="comp-name">Telecom Providers Business Insights</span>
+        <span class="role-title">Data Analyst (Power BI)</span>
+      </div>
+      <ul>
+        <li>Engineered advanced DAX measures (YoY Growth, 12-month Rolling Average, Variance Analysis) with drill-through capabilities, accelerating C-level decision-making by 35%.</li>
+      </ul>
+    </div>
+
+    <div class="section-title">EDUCATION</div>
+
+    <div class="education-item">
+      <div class="item-header">
+        <span class="comp-name">Sheridan College</span>
+        <span class="location">Mississauga, ON, Canada</span>
+      </div>
+      <div class="role-title">Ontario College Graduate Certificate in Computer Programming in Python</div>
+    </div>
+
+    <div class="education-item">
+      <div class="item-header">
+        <span class="comp-name">University of Essex</span>
+        <span class="location">Colchester, United Kingdom</span>
+      </div>
+      <div class="role-title">MSc Applied Data Science and Analysis</div>
+    </div>
+
+    <div class="education-item">
+      <div class="item-header">
+        <span class="comp-name">Gujarat Technological University</span>
+        <span class="location">Ahmedabad, India</span>
+      </div>
+      <div class="role-title">Bachelor's in Computer Engineering</div>
+    </div>
+  </div>
+
+</body>
+</html>

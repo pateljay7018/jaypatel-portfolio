@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects & Case Studies — Jay Patel | Data Analyst & BI Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Dedicated Page Dark Ambient Styling */
+    body {
+      background: radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.15) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 65%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                  #08090d;
+      background-attachment: fixed;
+    }
+
+    .projects-hero {
+      padding-top: 150px;
+      padding-bottom: 50px;
+      text-align: center;
+    }
+
+    .projects-hero .hero-description {
+      margin: 16px auto 32px;
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+    }
+
+    /* Detailed Project Card Styles */
+    .project-detail-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-metrics-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-purple-light);
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .project-tech-tags span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    /* Method Step Cards */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    /* Impact Grid Cards */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .impact-card {
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .impact-num {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .impact-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Website Content Wrapper -->
+  <div id="content-wrapper">
+
+    <!-- Header Navigation (Unified Component) -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="index.html#hero" class="brand-logo">
+          <span class="logo-badge">JP</span>
+          <div class="logo-text">
+            <span class="logo-name">JAY PATEL</span>
+            <span class="logo-sub">DATA ANALYST & BI SPECIALIST</span>
+          </div>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html#hero" class="nav-link">Home</a>
+          <a href="index.html#skills" class="nav-link">Skills</a>
+          <a href="index.html#experience" class="nav-link">Experience</a>
+          <a href="index.html#education" class="nav-link">Education</a>
+          <a href="index.html#certifications" class="nav-link">Certifications</a>
+          <a href="projects.html" class="nav-link active">Projects</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="nav-actions" style="display: flex; gap: 10px; align-items: center;">
+          <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener" class="btn btn-outline nav-cta">LINKEDIN <span class="arrow">↗</span></a>
+          <a href="assets/Jay_Patel_Resume.html" target="_blank" class="btn btn-primary nav-cta">VIEW RESUME <span class="arrow">⤓</span></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Page Hero Header -->
+    <section class="projects-hero">
+      <div class="container">
+        <div class="pill-badge">PORTFOLIO SHOWCASE</div>
+        <h1 class="hero-name" style="font-size: 3.5rem;">Projects & Case Studies</h1>
+        <p class="hero-description" style="max-width: 760px;">
+          Explore real-world Power BI dashboards, SQL data pipelines, Python analytical models, and Excel automation solutions engineered to eliminate manual bottlenecks and accelerate executive decision-making.
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="filter-tabs">
+          <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+          <button class="filter-btn" onclick="filterProjects('powerbi', this)">Power BI & DAX</button>
+          <button class="filter-btn" onclick="filterProjects('python', this)">Python Analytics</button>
+          <button class="filter-btn" onclick="filterProjects('sql', this)">SQL & Databases</button>
+          <button class="filter-btn" onclick="filterProjects('excel', this)">Excel & Automation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Complete Projects Showcase Grid (Driven 100% Dynamically from excel/projects.csv) -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div id="full-projects-grid" class="projects-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <!-- Dynamic projects rendered live from excel/projects.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Analytics Methodology Workflow -->
+    <section class="section" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">DATA METHODOLOGY</span>
+          <h2 class="section-title">How I Build Solutions</h2>
+        </div>
+
+        <div class="method-grid">
+          <div class="process-card glass-card">
+            <div class="process-num">01</div>
+            <h3 class="process-title">Data Extraction</h3>
+            <p class="process-desc">Connecting to multi-vendor SQL databases, REST APIs, CSVs, and Excel sheets using automated pipelines.</p>
+          </div>
+
+          <div class="process-card glass-card">
+            <div class="process-num">02</div>
+            <h3 class="process-title">Cleaning & Modeling</h3>
+            <p class="process-desc">Data wrangling with Pandas & SQL, building star schemas, key relationships, and performance indexing.</p>
+          </div>
+
+          <div class="process-card glass-card">
+            <div class="process-num">03</div>
+            <h3 class="process-title">DAX Logic & Measures</h3>
+            <p class="process-desc">Authoring YoY Growth, 12-month Rolling Averages, SLAs, and dynamic variance DAX calculation measures.</p>
+          </div>
+
+          <div class="process-card glass-card">
+            <div class="process-num">04</div>
+            <h3 class="process-title">C-Level BI Dashboards</h3>
+            <p class="process-desc">Publishing interactive Power BI reports with drill-through capabilities, RLS, and scheduled auto-refresh.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Quantified Business Results Metrics -->
+    <section class="section" style="padding-bottom: 60px;">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-subtitle">MEASURABLE IMPACT</span>
+          <h2 class="section-title">Quantified Project Results</h2>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card glass-card">
+            <div class="impact-num gradient-text">30+</div>
+            <div class="impact-label">Hours / Week Saved in Manual Reporting</div>
+          </div>
+
+          <div class="impact-card glass-card">
+            <div class="impact-num gradient-text">40%</div>
+            <div class="impact-label">Reporting Accuracy Boost & Error Catch</div>
+          </div>
+
+          <div class="impact-card glass-card">
+            <div class="impact-num gradient-text">35%</div>
+            <div class="impact-label">Faster Executive Decision-Making</div>
+          </div>
+
+          <div class="impact-card glass-card">
+            <div class="impact-num gradient-text">100+</div>
+            <div class="impact-label">Daily Service KPIs & SLA Triage Cases</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="cta-box glass-card">
+          <div class="cta-content">
+            <span class="section-subtitle">LET'S COLLABORATE</span>
+            <h2 class="cta-title">Need a Custom BI Dashboard?</h2>
+            <p class="cta-desc">
+              I am open to discuss custom BI dashboard builds, data pipeline optimization, and data analyst roles.
+            </p>
+            <a href="mailto:pateljay7018@gmail.com" class="btn btn-primary cta-btn">SEND AN EMAIL <span class="arrow">↗</span></a>
+          </div>
+
+          <div class="cta-contact-details">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a href="mailto:pateljay7018@gmail.com" class="contact-val">pateljay7018@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Phone</span>
+              <a href="tel:+14378581298" class="contact-val">+1 437-858-1298</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener" class="contact-val">linkedin.com/in/jaypatel1298</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (Unified Component) -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html#hero" class="brand-logo">
+            <span class="logo-badge">JP</span>
+            <div class="logo-text">
+              <span class="logo-name">JAY PATEL</span>
+              <span class="logo-sub">DATA ANALYST & BI SPECIALIST</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Transforming complex data into actionable dashboards and high-impact business insights.
+          </p>
+          <span class="copyright">© 2026 Jay Patel. All rights reserved.</span>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#education">Education</a></li>
+            <li><a href="index.html#certifications">Certifications</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">CONNECT</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:pateljay7018@gmail.com">Email Me</a></li>
+            <li><a href="tel:+14378581298">Call Me</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col newsletter-col">
+          <h4 class="footer-heading">GET IN TOUCH</h4>
+          <p class="newsletter-desc">Reach out directly via email for data analytics & BI inquiries.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.location.href='mailto:pateljay7018@gmail.com';">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="newsletter-btn">➔</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Client-side Category Filter for Projects Page
+    function filterProjects(category, btn) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.project-detail-card');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat.includes(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+  <script src="js/excel-loader.js"></script>
+</body>
+</html>
