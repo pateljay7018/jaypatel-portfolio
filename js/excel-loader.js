@@ -1,6 +1,11 @@
 /**
- * Dynamic Excel CSV Data Engine
- * Renders all website content 100% dynamically from /excel/*.csv data files
+ * Dynamic Excel CSV Data Engine with Low-Speed Auto-Scrolling Section Wheels
+ * 
+ * Auto-scroll wheel thresholds:
+ * - Work Experience: > 4 items
+ * - Education & Academics: > 3 items
+ * - Certifications & Credentials: > 12 items
+ * - Featured & Upcoming Releases: > 3 items
  */
 
 function parseCSV(text) {
@@ -81,11 +86,10 @@ async function renderExperience() {
     const exp = parseCSV(text);
     if (!exp.length) return;
 
-    container.style.gridTemplateColumns = `repeat(${Math.min(exp.length, 4)}, 1fr)`;
-    let html = '';
+    let itemsHtml = '';
     exp.forEach((e, idx) => {
       const num = e.Number || String(idx + 1).padStart(2, '0');
-      html += `
+      itemsHtml += `
         <div class="process-card glass-card">
           <div class="process-num">${num}</div>
           <h3 class="process-title">${e.Company || ''}</h3>
@@ -94,7 +98,22 @@ async function renderExperience() {
         </div>`;
     });
 
-    container.innerHTML = html;
+    // Auto-scroll wheel threshold: > 4 items
+    if (exp.length > 4) {
+      container.style.display = 'block';
+      const duration = Math.max(35, exp.length * 9);
+      container.innerHTML = `
+        <div class="section-marquee-wrapper">
+          <div class="section-marquee-track" style="animation-duration: ${duration}s;">
+            ${itemsHtml}
+            ${itemsHtml}
+          </div>
+        </div>`;
+    } else {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = `repeat(${Math.min(exp.length, 4)}, 1fr)`;
+      container.innerHTML = itemsHtml;
+    }
   } catch (err) {
     console.error('Error rendering experience:', err);
   }
@@ -110,11 +129,10 @@ async function renderEducation() {
     const edu = parseCSV(text);
     if (!edu.length) return;
 
-    container.style.gridTemplateColumns = `repeat(${Math.min(edu.length, 4)}, 1fr)`;
-    let html = '';
+    let itemsHtml = '';
     edu.forEach((e, idx) => {
       const num = e.Number || String(idx + 1).padStart(2, '0');
-      html += `
+      itemsHtml += `
         <div class="process-card glass-card">
           <div class="process-num">${num}</div>
           <h3 class="process-title">${e.Institution || ''}</h3>
@@ -123,7 +141,22 @@ async function renderEducation() {
         </div>`;
     });
 
-    container.innerHTML = html;
+    // Auto-scroll wheel threshold: > 3 items
+    if (edu.length > 3) {
+      container.style.display = 'block';
+      const duration = Math.max(35, edu.length * 9);
+      container.innerHTML = `
+        <div class="section-marquee-wrapper">
+          <div class="section-marquee-track" style="animation-duration: ${duration}s;">
+            ${itemsHtml}
+            ${itemsHtml}
+          </div>
+        </div>`;
+    } else {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = `repeat(${Math.min(edu.length, 3)}, 1fr)`;
+      container.innerHTML = itemsHtml;
+    }
   } catch (err) {
     console.error('Error rendering education:', err);
   }
@@ -139,12 +172,12 @@ async function renderCertifications() {
     const certs = parseCSV(text);
     if (!certs.length) return;
 
-    let html = '';
+    let itemsHtml = '';
     certs.forEach(c => {
       const skillsList = c.Skills ? c.Skills.split(';') : [];
       const tagsHtml = skillsList.map(s => `<span>${s.trim()}</span>`).join('');
 
-      html += `
+      itemsHtml += `
         <div class="cert-card glass-card">
           <div>
             <span class="cert-badge-tag">${c.Badge || ''}</span>
@@ -161,71 +194,125 @@ async function renderCertifications() {
         </div>`;
     });
 
-    grid.innerHTML = html;
+    // Auto-scroll wheel threshold: > 12 items
+    if (certs.length > 12) {
+      grid.style.display = 'block';
+      const duration = Math.max(45, certs.length * 4);
+      grid.innerHTML = `
+        <div class="section-marquee-wrapper">
+          <div class="section-marquee-track" style="animation-duration: ${duration}s;">
+            ${itemsHtml}
+            ${itemsHtml}
+          </div>
+        </div>`;
+    } else {
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      grid.innerHTML = itemsHtml;
+    }
   } catch (err) {
     console.error('Error rendering certifications:', err);
   }
 }
 
+async function renderFeaturedProjects() {
+  const compactGrid = document.getElementById('compact-projects-grid');
+  if (!compactGrid) return;
+
+  try {
+    const res = await fetch('excel/featured_projects.csv?t=' + Date.now());
+    if (!res.ok) return;
+    const text = await res.text();
+    const featuredProjects = parseCSV(text);
+    if (!featuredProjects.length) return;
+
+    let itemsHtml = '';
+    featuredProjects.forEach(p => {
+      const skillsList = p.TechTags ? p.TechTags.split(';') : [];
+      const tagsHtml = skillsList.map(s => `<span>${s.trim()}</span>`).join('');
+
+      itemsHtml += `
+        <div class="compact-project-card glass-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="compact-project-badge">${(p.Category || '').toUpperCase()}</span>
+              <span style="font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 50px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); color: var(--accent-purple-light);">${(p.Status || 'UPCOMING').toUpperCase()}</span>
+            </div>
+            <h3 class="compact-project-title">${p.Title || ''}</h3>
+            <p class="compact-project-desc">${p.Description || ''}</p>
+            <div class="project-tech-tags" style="margin-bottom: 12px;">
+              ${tagsHtml}
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--card-border); padding-top: 10px; margin-top: 8px;">
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Target: ${p.ExpectedRelease || 'Coming Soon'}</span>
+            <span class="compact-project-link">Upcoming Feature 🚀</span>
+          </div>
+        </div>`;
+    });
+
+    // Auto-scroll wheel threshold: > 3 items
+    if (featuredProjects.length > 3) {
+      compactGrid.style.display = 'block';
+      const duration = Math.max(35, featuredProjects.length * 9);
+      compactGrid.innerHTML = `
+        <div class="section-marquee-wrapper">
+          <div class="section-marquee-track" style="animation-duration: ${duration}s;">
+            ${itemsHtml}
+            ${itemsHtml}
+          </div>
+        </div>`;
+    } else {
+      compactGrid.style.display = 'grid';
+      compactGrid.style.gridTemplateColumns = `repeat(${Math.min(featuredProjects.length, 3)}, 1fr)`;
+      compactGrid.innerHTML = itemsHtml;
+    }
+  } catch (err) {
+    console.error('Error rendering featured projects:', err);
+  }
+}
+
 async function renderProjects() {
+  const fullGrid = document.getElementById('full-projects-grid');
+  if (!fullGrid) return;
+
   try {
     const res = await fetch('excel/projects.csv?t=' + Date.now());
+    if (!res.ok) return;
     const text = await res.text();
     const projects = parseCSV(text);
     if (!projects.length) return;
 
-    // 1. Compact Featured Projects (for index.html)
-    const compactGrid = document.getElementById('compact-projects-grid');
-    if (compactGrid) {
-      const featured = projects.filter(p => p.Featured && p.Featured.toLowerCase().trim() === 'yes');
-      let compactHtml = '';
-      featured.forEach(p => {
-        compactHtml += `
-          <a href="projects.html" class="compact-project-card glass-card">
+    let fullHtml = '';
+    projects.forEach(p => {
+      const skillsList = p.TechTags ? p.TechTags.split(';') : [];
+      const tagsHtml = skillsList.map(s => `<span>${s.trim()}</span>`).join('');
+
+      fullHtml += `
+        <div class="project-card glass-card project-detail-card" data-category="${p.Category || ''}">
+          <div class="project-img-wrapper">
+            <img src="${p.Image || 'assets/finovo.png'}" alt="${p.Title || ''}" />
+            <div class="project-overlay">
+              <span class="view-btn">View Case Details ↗</span>
+            </div>
+          </div>
+          <div class="project-info" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <div class="compact-project-badge">${(p.Category || '').toUpperCase()}</div>
-              <h3 class="compact-project-title">${p.Title || ''}</h3>
-              <p class="compact-project-desc">${p.Tagline || ''}</p>
+              <div class="project-meta">
+                <h3 class="project-name">${p.Title || ''}</h3>
+                <span class="project-cat">${(p.Category || '').toUpperCase()}</span>
+              </div>
+              <p class="project-tagline">${p.Tagline || ''}</p>
+              <div class="project-metrics-badge">${p.MetricsBadge || ''}</div>
             </div>
-            <span class="compact-project-link">View Full Case Study ↗</span>
-          </a>`;
-      });
-      compactGrid.innerHTML = compactHtml;
-    }
+            <div class="project-tech-tags">
+              ${tagsHtml}
+            </div>
+          </div>
+        </div>`;
+    });
 
-    // 2. Full Projects Showcase Grid (for projects.html)
-    const fullGrid = document.getElementById('full-projects-grid');
-    if (fullGrid) {
-      let fullHtml = '';
-      projects.forEach(p => {
-        const skillsList = p.TechTags ? p.TechTags.split(';') : [];
-        const tagsHtml = skillsList.map(s => `<span>${s.trim()}</span>`).join('');
-
-        fullHtml += `
-          <div class="project-card glass-card project-detail-card" data-category="${p.Category || ''}">
-            <div class="project-img-wrapper">
-              <img src="${p.Image || 'assets/finovo.png'}" alt="${p.Title || ''}" />
-              <div class="project-overlay">
-                <span class="view-btn">View Case Details ↗</span>
-              </div>
-            </div>
-            <div class="project-info" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-              <div>
-                <div class="project-meta">
-                  <h3 class="project-name">${p.Title || ''}</h3>
-                  <span class="project-cat">${(p.Category || '').toUpperCase()}</span>
-                </div>
-                <p class="project-tagline">${p.Tagline || ''}</p>
-                <div class="project-metrics-badge">${p.MetricsBadge || ''}</div>
-              </div>
-              <div class="project-tech-tags">
-                ${tagsHtml}
-              </div>
-            </div>
-          </div>`;
-      });
-      fullGrid.innerHTML = fullHtml;
-    }
+    fullGrid.innerHTML = fullHtml;
   } catch (err) {
     console.error('Error rendering projects:', err);
   }
@@ -236,5 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderExperience();
   renderEducation();
   renderCertifications();
+  renderFeaturedProjects();
   renderProjects();
 });

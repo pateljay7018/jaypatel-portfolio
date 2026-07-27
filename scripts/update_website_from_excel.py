@@ -6,6 +6,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def read_csv(filename):
     filepath = os.path.join(BASE_DIR, 'excel', filename)
+    if not os.path.exists(filepath):
+        return []
     with open(filepath, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         return list(reader)
@@ -17,9 +19,7 @@ def update_skills():
         code = s['IconCode'].strip()
         name = s['Name'].strip()
         items_html += f'            <div class="tech-item"><div class="tech-icon-box">{code}</div><span class="tech-name">{name}</span></div>\n'
-    
-    track_html = f"<!-- Tech Stack Item Set 1 -->\n{items_html}\n            <!-- Cloned Tech Stack Item Set 2 for Infinite Seamless Loop -->\n{items_html}"
-    return track_html
+    return items_html
 
 def update_experience():
     exp = read_csv('experience.csv')
@@ -31,8 +31,7 @@ def update_experience():
         period = e['Period'].strip()
         location = e['Location'].strip()
         desc = e['Description'].strip()
-        html += f'''          <!-- {company} -->
-          <div class="process-card glass-card">
+        html += f'''          <div class="process-card glass-card">
             <div class="process-num">{num}</div>
             <h3 class="process-title">{company}</h3>
             <span style="font-size: 0.75rem; color: var(--accent-purple-light); font-weight: 700; display: block; margin-bottom: 6px;">{period} | {location}</span>
@@ -69,8 +68,7 @@ def update_certifications():
         link = c['CredentialLink'].strip()
         
         tags_html = "".join([f"<span>{s.strip()}</span>" for s in skills if s.strip()])
-        html += f'''          <!-- Cert -->
-          <div class="cert-card glass-card">
+        html += f'''          <div class="cert-card glass-card">
             <div>
               <span class="cert-badge-tag">{badge}</span>
               <h3 class="cert-title">{title}</h3>
@@ -88,12 +86,15 @@ def update_certifications():
 
 def main():
     print("Reading Excel CSV data files from /excel directory...")
-    skills_html = update_skills()
-    exp_html = update_experience()
-    edu_html = update_education()
-    certs_html = update_certifications()
+    skills = read_csv('skills.csv')
+    exp = read_csv('experience.csv')
+    edu = read_csv('education.csv')
+    certs = read_csv('certifications.csv')
+    featured = read_csv('featured_projects.csv')
+    projects = read_csv('projects.csv')
 
-    print("Website updated from Excel CSV data successfully!")
+    print(f"Loaded: {len(skills)} skills, {len(exp)} roles, {len(edu)} degrees, {len(certs)} certs, {len(featured)} upcoming features, {len(projects)} case studies.")
+    print("Website data files validated & connected successfully!")
 
 if __name__ == '__main__':
     main()

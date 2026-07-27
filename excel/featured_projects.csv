@@ -1,0 +1,3 @@
+Status,Title,Category,Description,ExpectedRelease,TechTags
+IN DEVELOPMENT,AI-Powered Financial Forecasting Engine,POWER BI & DAX,Engineering predictive cashflow models using advanced DAX calculation groups and automated Synapse data pipelines.,Q3 2026,Power BI;DAX;Azure Synapse;Predictive Analytics
+UPCOMING,Real-Time Snowflake & AWS Streaming Pipeline,PYTHON & SNOWFLAKE,Building serverless AWS S3 data streaming pipeline with automated Snowflake Snowpipe data ingestion & Slack alert triggers.,Q4 2026,Python;Snowflake;AWS S3;Snowpipe
