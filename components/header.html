@@ -1,29 +1,41 @@
-<!-- Unified Header Navigation Component -->
-<header class="navbar">
-  <div class="nav-container">
-    <a href="index.html#hero" class="brand-logo">
-      <span class="logo-badge">JP</span>
-      <div class="logo-text">
-        <span class="logo-name">JAY PATEL</span>
-        <span class="logo-sub">DATA ANALYST & BI SPECIALIST</span>
-      </div>
-    </a>
-
-    <nav class="nav-menu">
-      <a href="index.html#hero" class="nav-link">Home</a>
-      <a href="projects.html" class="nav-link">Projects</a>
-      <a href="index.html#experience" class="nav-link">Experience</a>
-      <a href="index.html#certifications" class="nav-link">Certifications</a>
-      <a href="index.html#skills" class="nav-link">Skills</a>
-      <a href="index.html#education" class="nav-link">Education</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
+<!-- Pill-Shaped Centered Navbar -->
+<header class="pill-navbar">
+  <div class="pill-nav-container">
+    
+    <!-- Left Navigation -->
+    <nav class="pill-nav-left">
+      <a href="index.html#hero" class="pill-nav-link active">Home</a>
+      <a href="projects.html" class="pill-nav-link">Projects</a>
+      <a href="index.html#experience" class="pill-nav-link">Experience</a>
+      <a href="index.html#certifications" class="pill-nav-link">Certifications</a>
     </nav>
 
-    <div class="nav-actions" style="display: flex; gap: 10px; align-items: center;">
-      <a href="https://www.linkedin.com/in/jaypatel1298/" target="_blank" rel="noopener"
-        class="btn btn-outline nav-cta">LINKEDIN <span class="arrow">↗</span></a>
-      <a href="assets/Jay_Patel_Resume.html" target="_blank" class="btn btn-primary nav-cta">VIEW RESUME <span
-          class="arrow">⤓</span></a>
+    <!-- Center Logo/Name -->
+    <a href="index.html#hero" class="pill-brand">
+      <div class="pill-logo-circle">
+        <span class="pill-logo-icon">
+          <!-- A sleek geometric icon like the reference -->
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M5 4h5v16H5V4zm10 8h4v8h-4v-8z"/>
+          </svg>
+        </span>
+      </div>
+      <span class="pill-logo-name">Jay Patel<span class="dot">.</span></span>
+    </a>
+
+    <!-- Right Navigation & Actions -->
+    <div class="pill-nav-right-group">
+      <nav class="pill-nav-right">
+        <a href="index.html#skills" class="pill-nav-link">Skills</a>
+        <a href="index.html#education" class="pill-nav-link">Education</a>
+      </nav>
+      
+      <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <a href="index.html#contact" class="pill-cta">Let's Talk</a>
     </div>
+
   </div>
 </header>

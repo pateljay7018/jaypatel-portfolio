@@ -1,0 +1,90 @@
+/* === LIGHT THEME OVERRIDES (Alex Morgan Reference) === */
+
+[data-theme="light"] {
+  --bg-dark: #f4f0ea; /* Creamy off-white */
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #737373;
+  --accent-purple: #c55738; /* Muted rusty orange */
+  --accent-purple-light: #e06c48;
+  --accent-gradient: #c55738; /* Solid color to replace gradient */
+  
+  /* Introducing Serif Font for headings in Light Mode */
+  --font-heading: 'Playfair Display', serif;
+}
+
+[data-theme="light"] body {
+  background-color: var(--bg-dark);
+}
+
+/* Hide Dark Background Animation Canvas in Light Mode */
+[data-theme="light"] .canvas-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Update Typography in Light Mode to match reference */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] .hero-name,
+[data-theme="light"] .section-title {
+  font-family: var(--font-heading);
+  letter-spacing: -1px;
+}
+
+[data-theme="light"] .hero-name {
+  font-size: 6rem; /* Make it massive like "PORTFOLIO" in reference */
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .pill-badge {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* Adjust card shadows for light mode instead of border glows */
+[data-theme="light"] .glass-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .cert-card,
+[data-theme="light"] .timeline-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+[data-theme="light"] .stat-value {
+  color: var(--accent-purple);
+  -webkit-text-fill-color: var(--accent-purple); /* Override gradient */
+}
+
+/* Make icons/buttons adapt cleanly */
+[data-theme="light"] .btn-outline {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: var(--text-primary);
+  color: var(--card-bg);
+}
+
+[data-theme="light"] .btn-primary {
+  background: var(--text-primary);
+  color: var(--card-bg);
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: #333;
+}
+
+/* Change the moon icon to a sun icon in light mode, or highlight it */
+[data-theme="light"] .theme-toggle-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+}

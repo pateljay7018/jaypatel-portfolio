@@ -1,0 +1,129 @@
+/* --- PILL NAVBAR --- */
+.pill-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1000px; /* Kept slightly narrower like the image */
+  background: #111; /* Dark background */
+  border-radius: 60px;
+  z-index: 1000;
+  padding: 12px 24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.pill-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pill-nav-left, .pill-nav-right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.pill-nav-right-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.pill-nav-link {
+  color: #d0d0d0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-family: var(--font-family);
+}
+
+.pill-nav-link:hover, .pill-nav-link.active {
+  color: #f26e46; /* Matching the orange in the design */
+}
+
+/* Add an underline to the active link */
+.pill-nav-link.active {
+  position: relative;
+}
+.pill-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #f26e46;
+}
+
+/* Center Brand Section */
+.pill-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin: 0 20px; /* Extra breathing room around the logo */
+}
+
+.pill-logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f26e46; /* Vibrant orange */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111; /* Dark icon */
+  transform: rotate(-15deg); /* Slight angle like the logo in the image */
+}
+
+.pill-logo-name {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  font-family: var(--font-family);
+}
+
+.pill-logo-name .dot {
+  color: #f26e46;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: #333;
+}
+
+/* CTA Button */
+.pill-cta {
+  background: #fcfcfc;
+  color: #111;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: var(--font-family);
+}
+
+.pill-cta:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}

@@ -7,9 +7,11 @@
   <title>Jay Patel - Data Analyst & BI Specialist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="header-pill.css" />
+  <link rel="stylesheet" href="light-theme.css" />
 </head>
 
 <body>
@@ -20,12 +22,6 @@
       <div id="loader-bar" class="loader-bar"></div>
     </div>
     <div id="loader-text" class="loader-text">Loading 0%</div>
-  </div>
-
-  <!-- Background Scroll Animation Canvas -->
-  <div class="canvas-container">
-    <canvas id="scroll-canvas"></canvas>
-    <div class="canvas-overlay"></div>
   </div>
 
   <!-- Main Website Content Wrapper -->
@@ -72,46 +68,40 @@
           </div>
         </div>
 
+        <div class="hero-image-center">
+          <div class="orange-circle"></div>
+          <img src="frames/Subject.png" alt="Jay Patel" class="hero-subject" />
+        </div>
+
         <div class="hero-floating-elements">
-          <div class="glass-card float-card card-ai">
-            <div class="card-tag">BI DASHBOARDING</div>
-            <div class="ds-badges">
-              <span>POWER BI</span>
-              <span>DAX</span>
-              <span>SQL SERVER</span>
-              <span>TABLEAU</span>
-              <span>KPI DESIGN</span>
-              <span>DATA MODELING</span>
-            </div>
+          <div class="ds-badges" style="max-width: 340px; justify-content: flex-end;">
+            <span class="pill-large">POWER BI</span>
+            <span>DAX</span>
+            <span class="pill-icon">✦</span>
+            <span>SQL SERVER</span>
+            <span>TABLEAU</span>
+            <span class="pill-large">KPI DESIGN</span>
+            <span>DATA MODELING</span>
           </div>
 
-          <div class="glass-card float-card card-ds">
-            <div class="card-tag">ANALYTICS & ETL</div>
-            <div class="ds-badges">
-              <span>PYTHON</span>
-              <span>PANDAS</span>
-              <span>SNOWFLAKE</span>
-              <span>AWS S3</span>
-              <span>POWER AUTOMATE</span>
-              <span>EXCEL VBA</span>
-            </div>
+          <div class="ds-badges" style="max-width: 340px; justify-content: flex-end;">
+            <span>PYTHON</span>
+            <span class="pill-large">PANDAS</span>
+            <span>SNOWFLAKE</span>
+            <span class="pill-icon">✦</span>
+            <span>AWS S3</span>
+            <span class="pill-large">POWER AUTOMATE</span>
+            <span>EXCEL VBA</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: Tech Stack & Skills Marquee Wheel (Driven 100% Dynamically from excel/skills.csv) -->
-    <section id="skills" class="section" style="padding-top: 20px; padding-bottom: 40px;">
-      <div class="container">
-        <div class="section-header-center">
-          <span class="section-subtitle">MY TECH STACK</span>
-          <h2 class="section-title">Technologies & Skills I Use</h2>
-        </div>
-
-        <div class="tech-marquee-wrapper">
-          <div id="skills-track" class="tech-marquee-track">
-            <!-- Dynamic skills rendered live from excel/skills.csv -->
-          </div>
+    <!-- SECTION: Tech Stack & Skills Ticker Banner (Driven 100% Dynamically from excel/skills.csv) -->
+    <section id="skills" class="ticker-section">
+      <div class="ticker-marquee-wrapper">
+        <div id="skills-track" class="ticker-marquee-track">
+          <!-- Dynamic skills rendered live from excel/skills.csv -->
         </div>
       </div>
     </section>

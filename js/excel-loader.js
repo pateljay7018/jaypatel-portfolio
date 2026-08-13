@@ -60,16 +60,16 @@ async function renderSkills() {
     let itemsHtml = '';
     skills.forEach(s => {
       itemsHtml += `
-        <div class="tech-item">
-          <div class="tech-icon-box">${s.IconCode || ''}</div>
-          <span class="tech-name">${s.Name || ''}</span>
+        <div class="ticker-item">
+          <span class="ticker-text">${s.Name || ''}</span>
+          <span class="ticker-star">✦</span>
         </div>`;
     });
 
     track.innerHTML = `
-      <!-- Tech Stack Items Set 1 -->
+      <!-- Ticker Items Set 1 -->
       ${itemsHtml}
-      <!-- Cloned Tech Stack Items Set 2 for Infinite Loop -->
+      <!-- Cloned Ticker Items Set 2 for Infinite Loop -->
       ${itemsHtml}`;
   } catch (err) {
     console.error('Error rendering skills:', err);
