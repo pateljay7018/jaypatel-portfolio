@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .pill-nav-left, .pill-nav-right {
@@ -38,6 +39,7 @@
   font-weight: 500;
   transition: color 0.3s ease;
   font-family: var(--font-family);
+  white-space: nowrap;
 }
 
 .pill-nav-link:hover, .pill-nav-link.active {
@@ -65,11 +67,13 @@
   gap: 12px;
   text-decoration: none;
   margin: 0 20px; /* Extra breathing room around the logo */
+  min-width: 0;
 }
 
 .pill-logo-circle {
   width: 44px;
   height: 44px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: #f26e46; /* Vibrant orange */
   display: flex;
@@ -85,6 +89,7 @@
   font-weight: 700;
   letter-spacing: -0.2px;
   font-family: var(--font-family);
+  white-space: nowrap;
 }
 
 .pill-logo-name .dot {
@@ -96,8 +101,9 @@
   background: transparent;
   border: 1px solid #333;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,9 +127,136 @@
   text-decoration: none;
   transition: all 0.3s ease;
   font-family: var(--font-family);
+  white-space: nowrap;
 }
 
 .pill-cta:hover {
   background: #e0e0e0;
   transform: translateY(-2px);
+}
+
+/* --- MOBILE HAMBURGER + DRAWER --- */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid #333;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.pill-navbar.drawer-open .burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.pill-navbar.drawer-open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.pill-navbar.drawer-open .burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-drawer {
+  display: none;
+}
+
+/* Tablet: tighten spacing before switching to the drawer */
+@media (max-width: 1100px) {
+  .pill-nav-left, .pill-nav-right { gap: 16px; }
+  .pill-nav-right-group { gap: 14px; }
+  .pill-brand { margin: 0 10px; }
+  .pill-cta { padding: 11px 20px; font-size: 0.85rem; }
+  .pill-nav-link { font-size: 0.85rem; }
+}
+
+/* Phones & small tablets: hamburger drawer takes over */
+@media (max-width: 900px) {
+  .pill-navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+    max-width: none;
+    padding: 10px 14px;
+    border-radius: 28px;
+  }
+
+  .pill-nav-container { justify-content: space-between; }
+
+  .pill-nav-left,
+  .pill-nav-right,
+  .pill-cta { display: none; }
+
+  .pill-brand { margin: 0; }
+  .pill-logo-circle { width: 38px; height: 38px; }
+  .pill-logo-name { font-size: 1.05rem; }
+
+  .nav-burger { display: flex; }
+
+  .mobile-drawer {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 6px 6px;
+    border-top: 1px solid #2a2a2a;
+    animation: drawerIn 0.22s ease;
+  }
+
+  .mobile-drawer[hidden] { display: none; }
+
+  .mobile-drawer-nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-drawer-link {
+    display: block;
+    padding: 13px 10px;
+    color: #e6e6e6;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    border-radius: 12px;
+  }
+
+  .mobile-drawer-link:active,
+  .mobile-drawer-link:hover {
+    background: #1d1d1d;
+    color: #f26e46;
+  }
+
+  .mobile-drawer-cta {
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+    padding: 14px 18px;
+    background: #f26e46;
+    color: #111;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: var(--font-family);
+  }
+}
+
+@keyframes drawerIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer { animation: none; }
 }

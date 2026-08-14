@@ -10,7 +10,7 @@
   --accent-purple: #c55738; /* Muted rusty orange */
   --accent-purple-light: #e06c48;
   --accent-gradient: #c55738; /* Solid color to replace gradient */
-  
+
   /* Introducing Serif Font for headings in Light Mode */
   --font-heading: 'Playfair Display', serif;
 }
@@ -37,9 +37,10 @@
 }
 
 [data-theme="light"] .hero-name {
-  font-size: 6rem; /* Make it massive like "PORTFOLIO" in reference */
+  font-size: clamp(2.6rem, 11vw, 6rem); /* Massive on desktop, safe on phones */
   text-transform: uppercase;
   color: var(--text-primary);
+  overflow-wrap: break-word;
 }
 
 [data-theme="light"] .pill-badge {
@@ -87,4 +88,14 @@
 [data-theme="light"] .theme-toggle-btn {
   background: #ffffff;
   color: #1a1a1a;
+}
+
+/* Light-mode marquee fade edges must match the cream background */
+[data-theme="light"] .section-marquee-wrapper::before,
+[data-theme="light"] .tech-marquee-wrapper::before {
+  background: linear-gradient(to right, rgba(244, 240, 234, 0.95), transparent);
+}
+[data-theme="light"] .section-marquee-wrapper::after,
+[data-theme="light"] .tech-marquee-wrapper::after {
+  background: linear-gradient(to left, rgba(244, 240, 234, 0.95), transparent);
 }

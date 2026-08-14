@@ -26,7 +26,7 @@
 
   // Initialize
   updateActiveNav();
-  
+
   // Hide loader immediately since there are no images to preload
   const loader = document.getElementById("loader");
   if (loader) {

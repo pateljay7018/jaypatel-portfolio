@@ -66,7 +66,7 @@ def update_certifications():
         date = c['Date'].strip()
         skills = c['Skills'].strip().split(';')
         link = c['CredentialLink'].strip()
-        
+
         tags_html = "".join([f"<span>{s.strip()}</span>" for s in skills if s.strip()])
         html += f'''          <div class="cert-card glass-card">
             <div>

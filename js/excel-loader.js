@@ -1,17 +1,35 @@
 /**
  * Dynamic Excel CSV Data Engine with Low-Speed Auto-Scrolling Section Wheels
- * 
+ *
  * Auto-scroll wheel thresholds:
  * - Work Experience: > 4 items
  * - Education & Academics: > 3 items
  * - Certifications & Credentials: > 12 items
  * - Featured & Upcoming Releases: > 3 items
+ *
+ * NOTE: grid column counts are applied with responsive CSS classes
+ * (.g-cols-2 / .g-cols-3 / .g-cols-4) instead of inline styles, so the
+ * mobile media queries in style.css can always take over.
  */
+
+function applyGridCols(el, count) {
+  el.classList.remove('g-cols-1', 'g-cols-2', 'g-cols-3', 'g-cols-4', 'is-marquee');
+  el.style.removeProperty('grid-template-columns');
+  el.style.removeProperty('display');
+  el.classList.add('g-cols-' + Math.min(Math.max(count, 1), 4));
+}
+
+function applyMarquee(el) {
+  el.classList.remove('g-cols-1', 'g-cols-2', 'g-cols-3', 'g-cols-4');
+  el.style.removeProperty('grid-template-columns');
+  el.style.removeProperty('display');
+  el.classList.add('is-marquee');
+}
 
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
-  
+
   const headers = parseCSVLine(lines[0]);
   const data = [];
 
@@ -50,7 +68,7 @@ function parseCSVLine(line) {
 async function renderSkills() {
   const track = document.getElementById('skills-track');
   if (!track) return;
-  
+
   try {
     const res = await fetch('excel/skills.csv?t=' + Date.now());
     const text = await res.text();
@@ -100,7 +118,7 @@ async function renderExperience() {
 
     // Auto-scroll wheel threshold: > 4 items
     if (exp.length > 4) {
-      container.style.display = 'block';
+      applyMarquee(container);
       const duration = Math.max(35, exp.length * 9);
       container.innerHTML = `
         <div class="section-marquee-wrapper">
@@ -110,8 +128,7 @@ async function renderExperience() {
           </div>
         </div>`;
     } else {
-      container.style.display = 'grid';
-      container.style.gridTemplateColumns = `repeat(${Math.min(exp.length, 4)}, 1fr)`;
+      applyGridCols(container, exp.length);
       container.innerHTML = itemsHtml;
     }
   } catch (err) {
@@ -143,7 +160,7 @@ async function renderEducation() {
 
     // Auto-scroll wheel threshold: > 3 items
     if (edu.length > 3) {
-      container.style.display = 'block';
+      applyMarquee(container);
       const duration = Math.max(35, edu.length * 9);
       container.innerHTML = `
         <div class="section-marquee-wrapper">
@@ -153,8 +170,7 @@ async function renderEducation() {
           </div>
         </div>`;
     } else {
-      container.style.display = 'grid';
-      container.style.gridTemplateColumns = `repeat(${Math.min(edu.length, 3)}, 1fr)`;
+      applyGridCols(container, edu.length);
       container.innerHTML = itemsHtml;
     }
   } catch (err) {
@@ -196,7 +212,7 @@ async function renderCertifications() {
 
     // Auto-scroll wheel threshold: > 12 items
     if (certs.length > 12) {
-      grid.style.display = 'block';
+      applyMarquee(grid);
       const duration = Math.max(45, certs.length * 4);
       grid.innerHTML = `
         <div class="section-marquee-wrapper">
@@ -206,8 +222,7 @@ async function renderCertifications() {
           </div>
         </div>`;
     } else {
-      grid.style.display = 'grid';
-      grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      applyGridCols(grid, 4);
       grid.innerHTML = itemsHtml;
     }
   } catch (err) {
@@ -234,9 +249,9 @@ async function renderFeaturedProjects() {
       itemsHtml += `
         <div class="compact-project-card glass-card">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div class="compact-project-head">
               <span class="compact-project-badge">${(p.Category || '').toUpperCase()}</span>
-              <span style="font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 50px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); color: var(--accent-purple-light);">${(p.Status || 'UPCOMING').toUpperCase()}</span>
+              <span class="compact-project-status">${(p.Status || 'UPCOMING').toUpperCase()}</span>
             </div>
             <h3 class="compact-project-title">${p.Title || ''}</h3>
             <p class="compact-project-desc">${p.Description || ''}</p>
@@ -244,8 +259,8 @@ async function renderFeaturedProjects() {
               ${tagsHtml}
             </div>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--card-border); padding-top: 10px; margin-top: 8px;">
-            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Target: ${p.ExpectedRelease || 'Coming Soon'}</span>
+          <div class="compact-project-foot">
+            <span class="compact-project-target">Target: ${p.ExpectedRelease || 'Coming Soon'}</span>
             <span class="compact-project-link">Upcoming Feature 🚀</span>
           </div>
         </div>`;
@@ -253,7 +268,7 @@ async function renderFeaturedProjects() {
 
     // Auto-scroll wheel threshold: > 3 items
     if (featuredProjects.length > 3) {
-      compactGrid.style.display = 'block';
+      applyMarquee(compactGrid);
       const duration = Math.max(35, featuredProjects.length * 9);
       compactGrid.innerHTML = `
         <div class="section-marquee-wrapper">
@@ -263,8 +278,7 @@ async function renderFeaturedProjects() {
           </div>
         </div>`;
     } else {
-      compactGrid.style.display = 'grid';
-      compactGrid.style.gridTemplateColumns = `repeat(${Math.min(featuredProjects.length, 3)}, 1fr)`;
+      applyGridCols(compactGrid, featuredProjects.length);
       compactGrid.innerHTML = itemsHtml;
     }
   } catch (err) {
@@ -291,12 +305,12 @@ async function renderProjects() {
       fullHtml += `
         <div class="project-card glass-card project-detail-card" data-category="${p.Category || ''}">
           <div class="project-img-wrapper">
-            <img src="${p.Image || 'assets/finovo.png'}" alt="${p.Title || ''}" />
+            <img src="${p.Image || 'assets/finovo.png'}" alt="${p.Title || ''}" loading="lazy" />
             <div class="project-overlay">
               <span class="view-btn">View Case Details ↗</span>
             </div>
           </div>
-          <div class="project-info" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="project-info project-info-flex">
             <div>
               <div class="project-meta">
                 <h3 class="project-name">${p.Title || ''}</h3>

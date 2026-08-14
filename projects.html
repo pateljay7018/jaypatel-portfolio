@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Projects & Case Studies - Jay Patel | Data Analyst & BI Specialist</title>
+  <meta name="description" content="Power BI dashboards, SQL pipelines, Python analytics and Excel automation case studies by Jay Patel, Data Analyst & BI Specialist." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="header-pill.css" />
@@ -27,8 +28,13 @@
       text-align: center;
     }
 
+    .projects-hero .hero-name {
+      font-size: clamp(2.1rem, 8vw, 3.5rem);
+    }
+
     .projects-hero .hero-description {
       margin: 16px auto 32px;
+      max-width: 760px;
     }
 
     /* Category Filter Tabs */
@@ -42,6 +48,7 @@
 
     .filter-btn {
       padding: 10px 20px;
+      min-height: 44px;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
@@ -79,51 +86,31 @@
       color: var(--accent-purple-light);
     }
 
-    .project-tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 16px;
-    }
-
     .project-tech-tags span {
       font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 4px;
-      color: var(--text-muted);
     }
 
-    /* Method Step Cards */
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+    .section-flush-top { padding-top: 0; }
+    .section-tight-top { padding-top: 20px; }
+    .section-tight-bottom { padding-bottom: 60px; }
+
+    /* Mobile refinements for this page */
+    @media (max-width: 900px) {
+      .projects-hero { padding-top: 110px; padding-bottom: 32px; }
     }
 
-    /* Impact Grid Cards */
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .impact-card {
-      padding: 32px 24px;
-      text-align: center;
-    }
-
-    .impact-num {
-      font-size: 2.75rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .impact-label {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-weight: 600;
+    @media (max-width: 600px) {
+      .projects-hero { padding-top: 96px; }
+      .filter-tabs {
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .filter-btn {
+        padding: 9px 14px;
+        font-size: 0.78rem;
+        flex: 1 1 44%;
+      }
+      .section-tight-bottom { padding-bottom: 36px; }
     }
   </style>
 </head>
@@ -140,8 +127,8 @@
     <section class="projects-hero">
       <div class="container">
         <div class="pill-badge">PORTFOLIO SHOWCASE</div>
-        <h1 class="hero-name" style="font-size: 3.5rem;">Projects & Case Studies</h1>
-        <p class="hero-description" style="max-width: 760px;">
+        <h1 class="hero-name">Projects & Case Studies</h1>
+        <p class="hero-description">
           Explore real-world Power BI dashboards, SQL data pipelines, Python analytical models, and Excel automation
           solutions engineered to eliminate manual bottlenecks and accelerate executive decision-making.
         </p>
@@ -158,16 +145,16 @@
     </section>
 
     <!-- SECTION 2: Complete Projects Showcase Grid (Driven 100% Dynamically from excel/projects.csv) -->
-    <section class="section" style="padding-top: 0;">
+    <section class="section section-flush-top">
       <div class="container">
-        <div id="full-projects-grid" class="projects-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div id="full-projects-grid" class="projects-grid">
           <!-- Dynamic projects rendered live from excel/projects.csv -->
         </div>
       </div>
     </section>
 
     <!-- SECTION 3: Analytics Methodology Workflow -->
-    <section class="section" style="padding-top: 20px;">
+    <section class="section section-tight-top">
       <div class="container">
         <div class="section-header-center">
           <span class="section-subtitle">DATA METHODOLOGY</span>
@@ -207,7 +194,7 @@
     </section>
 
     <!-- SECTION 4: Quantified Business Results Metrics -->
-    <section class="section" style="padding-bottom: 60px;">
+    <section class="section section-tight-bottom">
       <div class="container">
         <div class="section-header-center">
           <span class="section-subtitle">MEASURABLE IMPACT</span>
@@ -286,7 +273,7 @@
 
       const cards = document.querySelectorAll('.project-detail-card');
       cards.forEach(card => {
-        const cat = card.getAttribute('data-category');
+        const cat = card.getAttribute('data-category') || '';
         if (category === 'all' || cat.includes(category)) {
           card.style.display = 'flex';
         } else {

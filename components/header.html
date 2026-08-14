@@ -1,7 +1,7 @@
 <!-- Pill-Shaped Centered Navbar -->
 <header class="pill-navbar">
   <div class="pill-nav-container">
-    
+
     <!-- Left Navigation -->
     <nav class="pill-nav-left">
       <a href="index.html#hero" class="pill-nav-link active">Home</a>
@@ -29,13 +29,33 @@
         <a href="index.html#skills" class="pill-nav-link">Skills</a>
         <a href="index.html#education" class="pill-nav-link">Education</a>
       </nav>
-      
+
       <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
 
       <a href="index.html#contact" class="pill-cta">Let's Talk</a>
+
+      <!-- Mobile Hamburger (visible under 900px only) -->
+      <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
     </div>
 
+  </div>
+
+  <!-- Mobile Slide-Down Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" hidden>
+    <nav class="mobile-drawer-nav">
+      <a href="index.html#hero" class="mobile-drawer-link">Home</a>
+      <a href="projects.html" class="mobile-drawer-link">Projects</a>
+      <a href="index.html#experience" class="mobile-drawer-link">Experience</a>
+      <a href="index.html#education" class="mobile-drawer-link">Education</a>
+      <a href="index.html#skills" class="mobile-drawer-link">Skills</a>
+      <a href="index.html#certifications" class="mobile-drawer-link">Certifications</a>
+      <a href="index.html#contact" class="mobile-drawer-cta">Let's Talk</a>
+    </nav>
   </div>
 </header>
