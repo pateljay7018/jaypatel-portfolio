@@ -64,6 +64,25 @@
   -webkit-text-fill-color: var(--accent-purple); /* Override gradient */
 }
 
+/* Hero stats box on white/light theme */
+[data-theme="light"] .hero-stats {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .stat-num {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .stat-divider {
+  background: rgba(0, 0, 0, 0.12);
+}
+
 /* Make icons/buttons adapt cleanly */
 [data-theme="light"] .btn-outline {
   border-color: var(--text-primary);

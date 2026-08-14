@@ -361,7 +361,7 @@ img, svg, video {
   justify-content: center;
   align-items: flex-end;
   height: 100%;
-  transform: translateX(10%);
+  transform: translateX(-3%);
 }
 
 .orange-circle {
